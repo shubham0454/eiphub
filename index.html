@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EIP Hub | Devcon 8 India Community Hub</title>
+<meta name="description" content="A four-day space at Devcon 8 India for EIPs, ERC standards, protocol upgrades, and open collaboration. Free to attend. Register now.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#000;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;
+  background:rgba(0,0,0,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #1a1a1a;
+}
+.nav-logo{
+  font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:16px;
+  letter-spacing:-.03em;color:#fff;
+  display:flex;align-items:center;line-height:1;
+  text-decoration:none;
+}
+.nav-logo svg{margin:0 2px;position:relative;top:-1px}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{
+  font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;
+  color:rgba(255,255,255,0.45);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;
+  transition:color .2s;
+}
+.nav-links a:hover{color:#fff}
+.nav-btn{
+  background:#fff;color:#000;
+  font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;
+  padding:9px 22px;border-radius:3px;text-decoration:none;
+  letter-spacing:.07em;text-transform:uppercase;
+  transition:background .2s,transform .15s;
+  white-space:nowrap;
+}
+.nav-btn:hover{background:#e8e8e8;transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:100px 24px 72px;text-align:center;
+  position:relative;overflow:hidden;background:#000;
+}
+/* amber glow — BG only, very subtle */
+.hero::after{
+  content:'';position:absolute;
+  left:50%;top:44%;transform:translate(-50%,-50%);
+  width:700px;height:500px;
+  background:radial-gradient(ellipse at center,rgba(160,95,10,0.13) 0%,rgba(120,70,5,0.04) 40%,transparent 68%);
+  pointer-events:none;z-index:0;
+}
+/* ghosted repeating text */
+.hero-bg{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;pointer-events:none;overflow:hidden;z-index:0;
+}
+.hero-bg span{
+  font-family:'Space Grotesk',sans-serif;font-size:clamp(72px,18vw,200px);
+  font-weight:800;color:rgba(255,255,255,0.032);letter-spacing:-.04em;
+  line-height:.92;white-space:nowrap;display:block;
+}
+.hero-badge{
+  position:relative;z-index:1;
+  display:inline-flex;align-items:center;gap:6px;
+  border:1px solid rgba(255,255,255,0.12);border-radius:100px;
+  padding:5px 14px;margin-bottom:24px;
+  font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;
+  color:rgba(255,255,255,0.5);letter-spacing:.05em;
+}
+.hero-badge strong{color:#fff;font-weight:700}
+.hero-title{
+  position:relative;z-index:1;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(68px,14vw,160px);font-weight:800;
+  line-height:.88;letter-spacing:-.04em;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:4px;
+}
+/* diamond: negative margins pull EIP and Hub tight against it */
+.hero-title svg{
+  flex-shrink:0;
+  margin:0 -0.01em;
+  position:relative;top:-0.04em;
+}
+.hero-sub{
+  position:relative;z-index:1;
+  font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.6vw,17px);font-weight:400;
+  color:rgba(255,255,255,0.42);max-width:480px;
+  margin:18px auto 44px;line-height:1.7;
+}
+/* countdown */
+.countdown{
+  position:relative;z-index:1;
+  display:flex;align-items:flex-start;gap:4px;justify-content:center;margin-bottom:44px;
+}
+.cd-block{display:flex;flex-direction:column;align-items:center;gap:6px}
+.cd-num{
+  font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;
+  color:#fff;background:#0c0c0c;border:1px solid #202020;
+  padding:10px 12px;border-radius:5px;min-width:70px;text-align:center;
+  letter-spacing:-.02em;line-height:1;
+}
+.cd-sep{
+  font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;
+  color:rgba(255,255,255,0.2);padding-top:10px;
+}
+.cd-lbl{font-size:10px;font-weight:500;color:rgba(255,255,255,0.3);letter-spacing:.1em;text-transform:uppercase}
+.btn-primary{
+  position:relative;z-index:1;
+  display:inline-block;background:#fff;color:#000;
+  font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;
+  padding:13px 44px;border-radius:3px;text-decoration:none;
+  letter-spacing:.07em;text-transform:uppercase;
+  transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:#e8e8e8;transform:translateY(-1px)}
+.btn-outline{
+  display:inline-block;
+  border:1.5px solid rgba(255,255,255,0.2);color:#fff;
+  font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;
+  padding:11px 36px;border-radius:3px;text-decoration:none;
+  letter-spacing:.07em;text-transform:uppercase;
+  transition:border-color .2s,color .2s;
+}
+.btn-outline:hover{border-color:rgba(255,255,255,0.6);color:#fff}
+
+/* ── TICKER ── */
+.ticker{background:#fff;padding:10px 0;overflow:hidden}
+.ticker-inner{display:flex;animation:scroll-t 32s linear infinite;white-space:nowrap;width:max-content}
+.ticker-inner span{
+  font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;
+  color:#000;padding:0 16px;letter-spacing:.05em;text-transform:uppercase;
+}
+.ticker-inner span::after{content:' ◆ ';margin-left:16px;opacity:.4}
+@keyframes scroll-t{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── FEATURE STRIP ── */
+.features{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  max-width:100%;border-top:1px solid #141414;border-bottom:1px solid #141414;
+}
+.feat{padding:44px 40px;border-right:1px solid #141414}
+.feat:last-child{border-right:none}
+.feat-icon{font-size:26px;margin-bottom:14px;display:block}
+.feat h3{
+  font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;
+  color:rgba(255,255,255,0.7);letter-spacing:.09em;text-transform:uppercase;margin-bottom:10px;
+}
+.feat p{font-size:14px;color:rgba(255,255,255,0.38);line-height:1.72}
+
+/* ── SHARED SECTION ── */
+.wrap{padding:88px 40px;max-width:1100px;margin:0 auto}
+.sec-eyebrow{
+  font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,0.35);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;
+}
+.sec-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(28px,4vw,48px);font-weight:800;
+  letter-spacing:-.03em;line-height:1.06;margin-bottom:14px;color:#fff;
+}
+.sec-body{font-size:15px;color:rgba(255,255,255,0.38);max-width:520px;line-height:1.72;margin-bottom:48px}
+
+/* two-tone EIP initials */
+.t1{color:#fff}.t2{color:rgba(255,255,255,0.3)}
+
+/* ── DAYS GRID ── */
+.days-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid #1a1a1a;border-radius:8px;overflow:hidden;
+  margin-top:0;
+}
+.day-card{background:#080808;padding:28px 24px;border-right:1px solid #1a1a1a;transition:background .2s}
+.day-card:last-child{border-right:none}
+.day-card:hover{background:#0e0e0e}
+.day-num{
+  font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;
+  color:rgba(255,255,255,0.25);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;
+}
+.day-card h3{
+  font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;
+  color:#fff;line-height:1.3;margin-bottom:16px;letter-spacing:-.01em;
+}
+.day-card ul{list-style:none}
+.day-card li{
+  font-size:12px;color:rgba(255,255,255,0.33);
+  padding:4px 0;border-bottom:1px solid #111;line-height:1.45;
+}
+.day-card li:last-child{border-bottom:none}
+
+/* ── FULL-BLEED SECTION ── */
+.full{padding:80px 40px;max-width:100%}
+.full-inner{max-width:1100px;margin:0 auto}
+
+/* ── PARTNERS ── */
+.partners-bg{background:#060606;border-top:1px solid #141414;border-bottom:1px solid #141414}
+.partners-row{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  align-items:center;gap:12px;margin-top:40px;
+}
+.partner-pill{
+  font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;
+  color:rgba(255,255,255,0.3);letter-spacing:.02em;
+  border:1px solid #1e1e1e;border-radius:100px;padding:10px 24px;
+  transition:color .2s,border-color .2s;cursor:default;
+}
+.partner-pill:hover{color:rgba(255,255,255,0.8);border-color:#333}
+
+/* ── SPEAKERS ── */
+.speakers-bg{background:#000;border-top:1px solid #141414;border-bottom:1px solid #141414;text-align:center}
+.speakers-tba{font-size:14px;color:rgba(255,255,255,0.25);margin-top:12px}
+
+/* ── TWEET ── */
+.tweet-bg{background:#060606;border-top:1px solid #141414;border-bottom:1px solid #141414;text-align:center}
+.tweet-container{max-width:520px;margin:32px auto 0;display:flex;justify-content:center}
+/* fallback if widget doesn't load */
+.tweet-fallback{
+  display:none;
+  border:1px solid #1e1e1e;border-radius:8px;padding:28px 32px;
+  background:#0a0a0a;max-width:520px;margin:32px auto 0;text-align:left;
+}
+.tweet-fallback p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:16px}
+.tweet-fallback a{color:#fff;font-weight:600;font-family:'Space Grotesk',sans-serif;font-size:13px;text-decoration:none;letter-spacing:.03em}
+.tweet-fallback a:hover{text-decoration:underline}
+
+/* ── FORUM CARD ── */
+.forum-bg{background:#000;border-top:1px solid #141414;border-bottom:1px solid #141414;text-align:center}
+
+/* ── PHOTOS ── */
+.photos-bg{background:#000;border-bottom:1px solid #141414}
+.photos-header{padding:72px 40px 28px;max-width:1100px;margin:0 auto}
+.photos-scroll{overflow:hidden;position:relative}
+.photos-scroll::before,.photos-scroll::after{
+  content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;
+}
+.photos-scroll::before{left:0;background:linear-gradient(to right,#000,transparent)}
+.photos-scroll::after{right:0;background:linear-gradient(to left,#000,transparent)}
+.photos-track{
+  display:flex;gap:4px;width:max-content;
+  animation:slide-photos 24s linear infinite;
+}
+.photos-track:hover{animation-play-state:paused}
+.photos-track img{
+  height:260px;width:auto;object-fit:cover;
+  display:block;flex-shrink:0;
+  filter:grayscale(20%);transition:filter .25s,transform .25s;
+}
+.photos-track img:hover{filter:grayscale(0%);transform:scale(1.015);z-index:1;position:relative}
+@keyframes slide-photos{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── FAQ ── */
+.faq-list{border:1px solid #1a1a1a;border-radius:8px;overflow:hidden;margin-top:40px}
+.faq-item{border-bottom:1px solid #1a1a1a}
+.faq-item:last-child{border-bottom:none}
+.faq-q-btn{
+  width:100%;background:none;border:none;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 28px;text-align:left;gap:20px;
+  transition:background .15s;
+}
+.faq-q-btn:hover{background:rgba(255,255,255,0.02)}
+.faq-q-text{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;letter-spacing:-.01em}
+.faq-arr{font-size:18px;color:rgba(255,255,255,0.3);flex-shrink:0;transition:transform .2s,color .2s;line-height:1;font-weight:400}
+.faq-body{display:none;padding:0 28px 20px;font-size:14px;color:rgba(255,255,255,0.42);line-height:1.75}
+.faq-body a{color:#fff;font-weight:600}
+.faq-item.open .faq-arr{transform:rotate(45deg);color:#fff}
+.faq-item.open .faq-body{display:block}
+
+/* ── TESTIMONIALS ── */
+.testi-bg{background:#060606;border-top:1px solid #141414;border-bottom:1px solid #141414}
+.testi-heading{
+  font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,0.25);letter-spacing:.14em;text-transform:uppercase;
+  text-align:center;margin-bottom:44px;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+}
+.testi-heading::before,.testi-heading::after{content:'◆';color:rgba(255,255,255,0.12)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.testi-card{
+  background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:24px;
+  display:flex;flex-direction:column;gap:16px;
+}
+.testi-quote{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.72;flex:1}
+.testi-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,0.7)}
+
+/* ── REGISTER CTA ── */
+.reg-bg{background:#fff;color:#000}
+.reg-bg .sec-eyebrow{color:rgba(0,0,0,0.35)}
+.reg-bg .sec-title{color:#000}
+.reg-bg .sec-body{color:rgba(0,0,0,0.45)}
+.btn-dark{
+  display:inline-block;background:#000;color:#fff;
+  font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;
+  padding:13px 44px;border-radius:3px;text-decoration:none;
+  letter-spacing:.07em;text-transform:uppercase;
+  transition:background .2s,transform .15s;
+}
+.btn-dark:hover{background:#1a1a1a;transform:translateY(-1px)}
+.reg-meta{font-size:12px;color:rgba(0,0,0,0.38);margin-top:12px}
+.reg-meta a{color:#000;font-weight:700}
+
+/* ── CLOSING ── */
+.closing{
+  background:#000;padding:120px 40px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.closing::before{
+  content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse at center,rgba(150,90,5,0.1) 0%,transparent 65%);
+  pointer-events:none;
+}
+.closing-title{
+  position:relative;z-index:1;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(48px,10vw,120px);font-weight:800;
+  line-height:.88;letter-spacing:-.04em;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:40px;
+}
+.closing-title svg{flex-shrink:0;margin:0 -0.01em;position:relative;top:-0.04em}
+.closing-eyebrow{
+  position:relative;z-index:1;
+  font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;
+  color:rgba(255,255,255,0.35);letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:#000;border-top:1px solid #141414;
+  padding:28px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.foot-brand{
+  font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:800;
+  color:#fff;letter-spacing:-.02em;display:flex;align-items:center;
+}
+.foot-brand svg{margin:0 2px;position:relative;top:-1px}
+.foot-links{display:flex;gap:20px;list-style:none}
+.foot-links a{font-size:13px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:#fff}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:12px 20px}
+  .nav-links{display:none}
+  .hero{padding:80px 20px 60px}
+  .ticker-inner span{font-size:11px}
+  .features{grid-template-columns:1fr}
+  .feat{border-right:none;border-bottom:1px solid #141414}
+  .feat:last-child{border-bottom:none}
+  .wrap{padding:64px 20px}
+  .full{padding:64px 20px}
+  .days-grid{grid-template-columns:repeat(2,1fr)}
+  .day-card{border-right:none;border-bottom:1px solid #1a1a1a}
+  .day-card:last-child{border-bottom:none}
+  .partners-bg .full{padding:64px 20px}
+  .testi-grid{grid-template-columns:1fr}
+  .photos-header{padding:56px 20px 24px}
+  footer{padding:24px 20px;flex-direction:column;align-items:flex-start}
+  .reg-bg .wrap{padding:72px 20px}
+  .closing{padding:80px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">EIP<svg width="20" height="20" viewBox="0 0 80 80" fill="none"><polygon points="40,4 64,40 40,52 16,40" fill="url(#n1)"/><polygon points="40,52 64,40 40,78" fill="url(#n2)"/><polygon points="40,52 16,40 40,78" fill="url(#n3)"/><polygon points="40,30 64,40 40,52 16,40" fill="url(#n4)"/><defs><linearGradient id="n1" x1="40" y1="4" x2="40" y2="52" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ddd"/><stop offset="100%" stop-color="#888"/></linearGradient><linearGradient id="n4" x1="16" y1="40" x2="64" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#555"/><stop offset="100%" stop-color="#aaa"/></linearGradient><linearGradient id="n2" x1="40" y1="52" x2="58" y2="78" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#777"/><stop offset="100%" stop-color="#444"/></linearGradient><linearGradient id="n3" x1="40" y1="52" x2="22" y2="78" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#333"/><stop offset="100%" stop-color="#555"/></linearGradient></defs></svg>Hub</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#community">Community</a></li>
+  </ul>
+  <a href="https://lu.ma/czi58jpe" target="_blank" class="nav-btn">Register</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span>EIP HUB</span>
+    <span>EIP HUB</span>
+    <span>EIP HUB</span>
+  </div>
+
+  <div class="hero-badge"><strong>Devcon 8</strong> · India · Community Hub</div>
+
+  <h1 class="hero-title">
+    EIP<svg width="130" height="130" viewBox="0 0 80 80" fill="none" style="width:clamp(48px,8.5vw,110px);height:auto"><polygon points="40,4 64,40 40,52 16,40" fill="url(#h1)"/><polygon points="40,52 64,40 40,78" fill="url(#h2)"/><polygon points="40,52 16,40 40,78" fill="url(#h3)"/><polygon points="40,30 64,40 40,52 16,40" fill="url(#h4)"/><defs><linearGradient id="h1" x1="40" y1="4" x2="40" y2="52" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#e2e2e2"/><stop offset="100%" stop-color="#999"/></linearGradient><linearGradient id="h4" x1="16" y1="40" x2="64" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#bbb"/></linearGradient><linearGradient id="h2" x1="40" y1="52" x2="58" y2="78" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#888"/><stop offset="100%" stop-color="#444"/></linearGradient><linearGradient id="h3" x1="40" y1="52" x2="22" y2="78" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3a3a3a"/><stop offset="100%" stop-color="#555"/></linearGradient></defs></svg>Hub
+  </h1>
+
+  <p class="hero-sub">A four-day collaborative space at Devcon 8 India dedicated to EIPs, ERC standards, protocol upgrades, and open standards that power Ethereum.</p>
+
+  <div class="countdown">
+    <div class="cd-block">
+      <div class="cd-num" id="cd-d">00</div>
+      <div class="cd-lbl">Days</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block">
+      <div class="cd-num" id="cd-h">00</div>
+      <div class="cd-lbl">Hours</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block">
+      <div class="cd-num" id="cd-m">00</div>
+      <div class="cd-lbl">Mins</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block">
+      <div class="cd-num" id="cd-s">00</div>
+      <div class="cd-lbl">Secs</div>
+    </div>
+  </div>
+
+  <a href="https://lu.ma/czi58jpe" target="_blank" class="btn-primary">Join</a>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>Devcon 8 India</span><span>EIP Hub</span><span>Community Hub</span>
+    <span>EIP Process and Governance</span><span>Protocol and Core Ethereum</span>
+    <span>Application Standards and ERCs</span><span>Enterprise Ethereum</span>
+    <span>Meet the Editors</span><span>Open Collaboration</span>
+    <span>Devcon 8 India</span><span>EIP Hub</span><span>Community Hub</span>
+    <span>EIP Process and Governance</span><span>Protocol and Core Ethereum</span>
+    <span>Application Standards and ERCs</span><span>Enterprise Ethereum</span>
+    <span>Meet the Editors</span><span>Open Collaboration</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="features">
+  <div class="feat">
+    <span class="feat-icon">🌏</span>
+    <h3>Global · In Person</h3>
+    <p>Located inside the Devcon 8 India venue. Join from the floor across all four days, or catch recordings afterward if you cannot make it live.</p>
+  </div>
+  <div class="feat">
+    <span class="feat-icon">⬡</span>
+    <h3>Credibly Neutral</h3>
+    <p>Open to everyone: first-time EIP authors, protocol researchers, client developers, enterprise teams, educators, and students.</p>
+  </div>
+  <div class="feat">
+    <span class="feat-icon">🔎</span>
+    <h3>Curiosity Led</h3>
+    <p>Office hours, Meet the Editors, live EIPsInsight dashboards, ERC clinics, hackathon integration, and contributor onboarding every day.</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="wrap">
+    <div class="sec-eyebrow">About the Hub</div>
+    <div class="sec-title">
+      <span class="t1">E</span><span class="t2">xplore</span> ·
+      <span class="t1">I</span><span class="t2">nnovate</span> ·
+      <span class="t1">P</span><span class="t2">articipate</span>
+    </div>
+    <p class="sec-body">Each of the four days follows a distinct theme guiding attendees through Ethereum standards, from EIP governance on day one to enterprise adoption on day four.</p>
+    <div class="days-grid">
+      <div class="day-card">
+        <div class="day-num">Day 1</div>
+        <h3>EIP Process and Governance</h3>
+        <ul>
+          <li>Intro to EIPs and lifecycle</li>
+          <li>GitHub workflows</li>
+          <li>Write your first EIP</li>
+          <li>Contributor onboarding</li>
+          <li>EIP Office Hours</li>
+          <li>Meet the Editors</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Day 2</div>
+        <h3>Protocol and Core Ethereum</h3>
+        <ul>
+          <li>Ethereum roadmap</li>
+          <li>Meta EIPs and upgrades</li>
+          <li>Glamsterdam and Hegotá</li>
+          <li>Client implementation</li>
+          <li>Testing and interop</li>
+          <li>Protocol tooling</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Day 3</div>
+        <h3>Application Standards and ERCs</h3>
+        <ul>
+          <li>ERC-7935, ERC-8004 and more</li>
+          <li>Chain ID and wallet standards</li>
+          <li>Reference implementations</li>
+          <li>Smart contract security</li>
+          <li>ERC review clinics</li>
+          <li>Builder networking</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Day 4</div>
+        <h3>Enterprise Ethereum</h3>
+        <ul>
+          <li>Standards adoption</li>
+          <li>Real world implementations</li>
+          <li>Enterprise architecture</li>
+          <li>Compliance and governance</li>
+          <li>EEA collaboration</li>
+          <li>Enterprise roundtables</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTNERS -->
+<div class="partners-bg" id="partners">
+  <div class="full">
+    <div class="full-inner" style="text-align:center">
+      <div class="sec-eyebrow">Partners and Supporters</div>
+      <div class="sec-title">Backed by the Ecosystem</div>
+      <div class="partners-row">
+        <div class="partner-pill">ECH Institute</div>
+        <div class="partner-pill">EIPsInsight</div>
+        <div class="partner-pill">EthCatHerders</div>
+        <div class="partner-pill">EtherWorld</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPEAKERS -->
+<div class="speakers-bg" id="speakers">
+  <div class="wrap" style="text-align:center">
+    <div class="sec-eyebrow">Speakers</div>
+    <div class="sec-title">Meet Our Speakers</div>
+    <p class="speakers-tba">To be announced soon. Register to stay updated.</p>
+  </div>
+</div>
+
+<!-- TWEET -->
+<div class="tweet-bg">
+  <div class="wrap" style="text-align:center">
+    <div class="sec-eyebrow">Devcon 8 India</div>
+    <div class="sec-title">Official Announcement</div>
+    <div class="tweet-container" id="tweet-container">
+      <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
+        <a href="https://x.com/EFDevcon/status/2097721361770701294"></a>
+      </blockquote>
+    </div>
+    <div class="tweet-fallback" id="tweet-fallback">
+      <p>Devcon 8 is coming to India. The official announcement from @EFDevcon is live on X.</p>
+      <a href="https://x.com/EFDevcon/status/2097721361770701294" target="_blank">View announcement on X →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FORUM CARD -->
+<div class="forum-bg">
+  <div class="wrap" style="text-align:center">
+    <div class="sec-eyebrow">Community Discussion</div>
+    <div class="sec-title">Join the Devcon Forum thread</div>
+    <p class="sec-body" style="margin:0 auto 36px">The proposal, community responses, and full discussion are live on the official Devcon forum.</p>
+    <a href="https://forum.devcon.org/t/devcon-8-india-community-hub-eip-hub/8747" target="_blank" class="btn-outline">Read on Devcon Forum</a>
+  </div>
+</div>
+
+<!-- PHOTOS -->
+<div class="photos-bg">
+  <div class="photos-header">
+    <div class="sec-eyebrow">From Previous Events</div>
+    <div class="sec-title" style="font-size:clamp(22px,3vw,34px)">EIP Hub in action</div>
+  </div>
+  <div class="photos-scroll">
+    <div class="photos-track">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/c/c1342c5cd56075dbd767937c3317306e2e2de278.jpeg" alt="Devcon SEA EIP Hub session" loading="lazy">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/2/2de6621a0a2c4c8a72d2f83efed45063178b40b8.jpeg" alt="ECH booth for EIPs" loading="lazy">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/0/0a8cd24473083e3c54d0ff9f1c217457d9c85784.jpeg" alt="Devcon SEA EIP session" loading="lazy">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/c/cdf4d3c59dcc56c8a4f537aac0df47c3a6950589.jpeg" alt="EIP governance at Women meetup" loading="lazy">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/3/34dc895a923de3af23a2f9c4f67b8ca46c325c58.jpeg" alt="EIP talk at W3Hub" loading="lazy">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/c/c1342c5cd56075dbd767937c3317306e2e2de278.jpeg" alt="Devcon SEA EIP Hub session" loading="lazy">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/2/2de6621a0a2c4c8a72d2f83efed45063178b40b8.jpeg" alt="ECH booth for EIPs" loading="lazy">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/0/0a8cd24473083e3c54d0ff9f1c217457d9c85784.jpeg" alt="Devcon SEA EIP session" loading="lazy">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/c/cdf4d3c59dcc56c8a4f537aac0df47c3a6950589.jpeg" alt="EIP governance at Women meetup" loading="lazy">
+      <img src="https://forum.devcon.org/uploads/default/original/2X/3/34dc895a923de3af23a2f9c4f67b8ca46c325c58.jpeg" alt="EIP talk at W3Hub" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div id="faq">
+  <div class="wrap">
+    <div class="sec-eyebrow">FAQ</div>
+    <div class="sec-title">Common questions</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What is the EIP Hub?</span>
+          <span class="faq-arr">+</span>
+        </button>
+        <div class="faq-body">A collaborative space at Devcon 8 India dedicated to Ethereum Improvement Proposals, ERC standards, protocol upgrades, and standards adoption. It brings together contributors from across the Ethereum ecosystem for technical discussions, office hours, and community engagement.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Who is it for?</span>
+          <span class="faq-arr">+</span>
+        </button>
+        <div class="faq-body">Anyone interested in shaping Ethereum: first-time EIP authors, protocol researchers, client developers, ERC authors, wallet developers, infrastructure teams, enterprise architects, educators, students, and open-source maintainers. Special focus on contributors from India and the wider APAC region.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Where is it?</span>
+          <span class="faq-arr">+</span>
+        </button>
+        <div class="faq-body">Inside the Devcon 8 India venue. A Devcon ticket is required to access the space. Register on Luma to receive location details and updates as they are confirmed.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Where can I find the full agenda?</span>
+          <span class="faq-arr">+</span>
+        </button>
+        <div class="faq-body">The full schedule is on Luma at <a href="https://lu.ma/czi58jpe" target="_blank">lu.ma/czi58jpe</a>. Register there and you will get session reminders and agenda updates directly in your calendar.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Will sessions be recorded?</span>
+          <span class="faq-arr">+</span>
+        </button>
+        <div class="faq-body">Selected sessions will be livestreamed and recorded. If you cannot join in person, you can watch recordings afterward.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-bg" id="community">
+  <div class="wrap">
+    <div class="testi-heading">Connect with like-minded contributors</div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-quote">"This could be a really useful space for learning, meeting contributors, and understanding how Ethereum standards actually move forward, especially valuable for people looking to get involved for the first time."</div>
+        <div class="testi-name">Yash Kamal Chaturvedi</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Really like the focus on getting first-time EIP Authors involved. While the process can feel intimidating when you are new, having editors and contributors around makes a real difference."</div>
+        <div class="testi-name">Rajdeep Chakraborty</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Having the dashboards running throughout Devcon is pretty cool. Seeing EIP lifecycles and upgrades alongside live data will be something else."</div>
+        <div class="testi-name">Subhrajeet Bhattacharya</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"An EIP Hub would be a great addition to Devcon, especially for making EIP governance and standards more accessible to builders and new contributors across India and APAC."</div>
+        <div class="testi-name">Rakesh Kumawat</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Having a place to actually ask questions and get feedback seems way more useful. The EIP Office Hours combined with Meet the Editors is a wonderful initiative."</div>
+        <div class="testi-name">Abhilasha Ghildiyal</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Really like the idea of bringing authors, editors, builders, and new contributors into the same space. Could lead to some very useful conversations and collaborations during Devcon."</div>
+        <div class="testi-name">Anni</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTER -->
+<div class="reg-bg">
+  <div class="wrap" style="text-align:center">
+    <div class="sec-eyebrow">Register</div>
+    <div class="sec-title">EIP Hub · Devcon 8 India</div>
+    <p class="sec-body" style="margin:0 auto 36px">Register on Luma to get schedule updates, session reminders, and access details.</p>
+    <a href="https://lu.ma/czi58jpe" target="_blank" class="btn-dark">lu.ma/czi58jpe</a>
+    <p class="reg-meta">Free to attend. Devcon 8 India ticket required for venue access.</p>
+    <p class="reg-meta">Questions? <a href="mailto:eiphub@gmail.com">eiphub@gmail.com</a></p>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-eyebrow">◆ See you at Devcon 8 India ◆</div>
+  <div class="closing-title">
+    EIP<svg viewBox="0 0 80 80" fill="none" style="width:clamp(44px,8vw,108px);height:auto"><polygon points="40,4 64,40 40,52 16,40" fill="url(#c1)"/><polygon points="40,52 64,40 40,78" fill="url(#c2)"/><polygon points="40,52 16,40 40,78" fill="url(#c3)"/><polygon points="40,30 64,40 40,52 16,40" fill="url(#c4)"/><defs><linearGradient id="c1" x1="40" y1="4" x2="40" y2="52" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#e2e2e2"/><stop offset="100%" stop-color="#999"/></linearGradient><linearGradient id="c4" x1="16" y1="40" x2="64" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#bbb"/></linearGradient><linearGradient id="c2" x1="40" y1="52" x2="58" y2="78" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#888"/><stop offset="100%" stop-color="#444"/></linearGradient><linearGradient id="c3" x1="40" y1="52" x2="22" y2="78" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3a3a3a"/><stop offset="100%" stop-color="#555"/></linearGradient></defs></svg>Hub
+  </div>
+  <a href="https://lu.ma/czi58jpe" target="_blank" class="btn-primary" style="position:relative;z-index:1">Join</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">EIP<svg width="16" height="16" viewBox="0 0 80 80" fill="none"><polygon points="40,4 64,40 40,52 16,40" fill="url(#f1)"/><polygon points="40,52 64,40 40,78" fill="url(#f2)"/><polygon points="40,52 16,40 40,78" fill="url(#f3)"/><polygon points="40,30 64,40 40,52 16,40" fill="url(#f4)"/><defs><linearGradient id="f1" x1="40" y1="4" x2="40" y2="52" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ddd"/><stop offset="100%" stop-color="#888"/></linearGradient><linearGradient id="f4" x1="16" y1="40" x2="64" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#555"/><stop offset="100%" stop-color="#aaa"/></linearGradient><linearGradient id="f2" x1="40" y1="52" x2="58" y2="78" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#777"/><stop offset="100%" stop-color="#444"/></linearGradient><linearGradient id="f3" x1="40" y1="52" x2="22" y2="78" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#333"/><stop offset="100%" stop-color="#555"/></linearGradient></defs></svg>Hub · Devcon 8 India</div>
+  <ul class="foot-links">
+    <li><a href="https://lu.ma/czi58jpe" target="_blank">Register</a></li>
+    <li><a href="https://forum.devcon.org/t/devcon-8-india-community-hub-eip-hub/8747" target="_blank">Forum</a></li>
+    <li><a href="mailto:eiphub@gmail.com">eiphub@gmail.com</a></li>
+  </ul>
+</footer>
+
+<script async src="https://platform.twitter.com/widgets.js"></script>
+<script>
+// Countdown
+const target = new Date('2026-11-10T09:00:00+05:30');
+function tick(){
+  const diff = target - new Date();
+  if(diff <= 0) return;
+  document.getElementById('cd-d').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+}
+tick(); setInterval(tick, 1000);
+
+// FAQ
+function toggleFaq(btn){ btn.parentElement.classList.toggle('open'); }
+
+// Tweet fallback — show link card if widget fails to load after 4s
+setTimeout(function(){
+  var bq = document.querySelector('.twitter-tweet');
+  if(bq && bq.offsetHeight < 50){
+    document.getElementById('tweet-fallback').style.display = 'block';
+    document.getElementById('tweet-container').style.display = 'none';
+  }
+}, 4000);
+</script>
+</body>
+</html>
